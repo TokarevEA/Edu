@@ -1,23 +1,68 @@
 #include <iostream>
-#include"Array.h"
-#include"Exceptions.h"
-using namespace std;
+#include <string>
+#include "Array.h"
+#include "funcs.h"
+//#include <map>
+
+
 
 int main() {
-	
-	Array<int>* newArr = new Array<int>();
-	int length = 0;
-	int index = 0;
-	int value = 0;
-	int size = 0;
-	try {
-		Array<int>* arr = new Array<int>(-1);
-		cout << "arr size: " << arr->getLength() << endl;
-		cout << arr->debug() << endl;
-		
-	} 
-	catch (const BadLength& e) {
-		e.Show(); 
-	} 
-	return 0;
+    bool t_sel = true;
+    while (t_sel) {
+        int type = 0;
+        type = typeSelect();
+
+        switch (type) {
+        case 1: {
+            Array<short>* arr = new Array<short>();
+            performOperations(arr);
+            delete arr;
+            break;
+        }
+        case 2: {
+            Array<int>* arr = new Array<int>();           
+            performOperations(arr);
+            delete arr;
+            break;
+        }
+        case 3: {
+            Array<long>* arr = new Array<long>();            
+            performOperations(arr);
+            delete arr;
+            break;
+        }
+        case 4: {
+            Array<float>* arr = new Array<float>();
+            performOperations(arr);
+            delete arr;
+            break;
+        }
+        case 5: {
+            Array<double>* arr = new Array<double>();
+            performOperations(arr);
+            delete arr;
+            break;
+        }
+        case 6: {
+            Array<char>* arr = new Array<char>();
+            performOperations(arr);
+            delete arr;
+            break;
+        }
+        case 7: {
+            Array<string>* arr = new Array<string>();
+            performOperations(arr);
+            delete arr;
+            break;
+        }
+        case 0: {
+            t_sel = false;
+            cout << "Program closed" << endl;
+            break;
+        }
+        default:
+            cout << "Invalid type entered" << endl;
+        }
+    }
+    return 0;
 }
